@@ -23,6 +23,21 @@ int main() {
     Timings listTimings = {0, 0, 0, 0};
     Timings setTimings = {0, 0, 0 ,0};
 
+    readList(listCodes, listTimings.readTime);
+    readVector(vecCodes, vecTimings.readTime);
+    readSet(setCodes, setTimings.readTime);
+
+    sortVector(vecCodes, vecTimings.sortTime);
+    sortList(listCodes, listTimings.sortTime);
+    setTimings.sortTime = -1;
+
+    insertVector(vecCodes, vecTimings.insertTime);
+    insertList(listCodes, listTimings.insertTime);
+    insertSet(setCodes, setTimings.insertTime);
+
+    deleteVector(vecCodes, vecTimings.deleteTime);
+    deleteList(list
+
     return 0;
 }
 //add readvector, readlist, and readset fucntions. wrote the functions to focus on reading from the file and adding error handling
