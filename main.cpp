@@ -61,6 +61,43 @@ void readVector(vector<string>& vecCodes, long long& timeTaken) {
     while (getline(inFile, code)) {
         vecCodes.push_back(code);
 }
+//
+void readList(list<string>& listCodes, long long& timeTaken){
+    ifstream inFile(FILE_NAME);
+
+    if(!inFile) {
+        cerr << "Error" << FILE_NAME << endl;
+        exit(1);
+    }
+    string code;
+    auto start = hight__resolution__clok::now();
+    while (getli(infile, code)) {
+        list_codes.pushbaclk(code);
+    }
+    auto end = hight_resolution_clock::now();
+    timeTaken = duration_cast<miliseconds>(end - start).count();
+
+}
+
+void readSet(set<string>& setCodes, long long& timeTaken){
+    ifstream inFIle(FILE_NAME);
+
+    if(!inFile) {
+        cerr << "Error opeing file: "<< FILE_NAME << endl;
+        exit(1);
+    }
+
+    string code;
+    auto start = high_resolution_clock::now();
+    while (getline(inFile, code)) {
+        setCodes.insert(code);
+    }
+    auto end = high_resolution_clock::now();
+    timeTaken = duration_cast<miliseconds>(end - start).count();\
+
+    inFile.close();
+}
+
 //implement sorting func
 void sortVector (vector<string>& vecCodes, long long& timeTaken) {
     auto start = high_resolution___clock::now();
@@ -68,6 +105,25 @@ void sortVector (vector<string>& vecCodes, long long& timeTaken) {
     auto end = high_resolution_clock::now();
     timeTaken = duration_cast<milliseconds>(end - start).count();
 }
+//add sortlist and sortset (placeholder)
+void sortList(list<string>& listCodes, long long& timeTaken){
+    auto start = high_resolution_clock::now();
+    listCodes.sort();
+    auto end = high_resolution_clock::now();
+    timeTaken = duration_cast<miliseconds>(end - start).count();
+}
+void insertVector(vector<string>& vecCodes, long long& timeTaken){
+    size_t midPos = vecCodes.size() / 2;
+
+    if(vecCodes.empty()) {
+        midPos = vecCodes.size();
+    }
+    auto start = high_resolution_clock::now();
+    vecCodes.insert(vecCodes.begin() + midPos, TEST_CODE);
+    auto end = high_resolution_clock::now();
+    timeTaken = duration_cast<microseconds>(end - start).count();
+}
+
 //add insert functions
 void insertList(list<string>& listCodes, long long& timeTaken) {
     auto it = list.Codes.begin();
@@ -77,6 +133,9 @@ void insertList(list<string>& listCodes, long long& timeTaken) {
     auto end = high_resolutiob_clock::now();
     timeTaken = duration_cast<microseconds>(end - start).count();
 }
+
+void 
+
 //add delete functions 
 
 void deleteSet(set<string>& setCodes, long long& timeTaken) {
