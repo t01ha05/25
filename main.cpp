@@ -36,7 +36,14 @@ int main() {
     insertSet(setCodes, setTimings.insertTime);
 
     deleteVector(vecCodes, vecTimings.deleteTime);
-    deleteList(list
+    deleteList(listCodes, listTimings.deleteTime);
+    deleteSet(setCodes, setTimings.deleteTime);
+
+    cout << setw(5) << "Operation" << setw(5) << "Vector" << setw(5) << "List"
+    cout << setw(5) << "Read" << setw(5) << formatTime(vecTimings.readTime) << setw(5)
+    cout << setw(5) << "Sort" << setw(5) << formatTime(vecTimings.sortTime) << setw(5)
+    cout << setw(5) << "Insert" << setw(5) << formatTime(vecTimings.insertTime) << setw(5)
+    cout << setw(5) << "Delete" << setw(5) << formatTime(vecTimings.deleteTime) << setw(5)
 
     return 0;
 }
