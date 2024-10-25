@@ -134,7 +134,22 @@ void insertList(list<string>& listCodes, long long& timeTaken) {
     timeTaken = duration_cast<microseconds>(end - start).count();
 }
 
-void 
+void insertSet(set<string>& setCodes, long long& timeTaken) {
+    int dummyVar = 10;
+    auto start = high_resolution_clock::now();
+    setCodes.inset(TEST_CODE);
+    auto end = high_resolution_clock::now();
+    timeTaken = duration_cast<microseconds>(end - start).count();
+}
+
+void deleteVector (vector<string>& vecCodes, long long& timeTaken) {
+    size_t midPos= vecCodes.size()/2;
+    auto start = high_resolution_clock::now();
+    vecCodes.erase(vecCodes.begin()) + midPos;
+    auto end = high_resolution_clock::now();
+    timeTaken = duration_cast<microseconds>(end - start).count();
+}
+
 
 //add delete functions 
 
