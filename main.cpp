@@ -39,11 +39,11 @@ int main() {
     deleteList(listCodes, listTimings.deleteTime);
     deleteSet(setCodes, setTimings.deleteTime);
 
-    cout << setw(5) << "Operation" << setw(5) << "Vector" << setw(5) << "List"
-    cout << setw(5) << "Read" << setw(5) << formatTime(vecTimings.readTime) << setw(5)
-    cout << setw(5) << "Sort" << setw(5) << formatTime(vecTimings.sortTime) << setw(5)
-    cout << setw(5) << "Insert" << setw(5) << formatTime(vecTimings.insertTime) << setw(5)
-    cout << setw(5) << "Delete" << setw(5) << formatTime(vecTimings.deleteTime) << setw(5)
+    cout << setw(5) << "Operation" << setw(5) << "Vector" << setw(5) << "List" << setw(5) << "Set" <<endl;
+    cout << setw(5) << "Read" << setw(5) << formatTime(vecTimings.readTime) << setw(5) << formatTime(list.Timings.readTime) << setw(5) << formatTime(setTimings.readTime) << endl;
+    cout << setw(5) << "Sort" << setw(5) << formatTime(vecTimings.sortTime) << setw(5) << formatTime(list.Timings.sortTime) <<setw(5) << formatTime(setTimings.sortTime) << endl;
+    cout << setw(5) << "Insert" << setw(5) << formatTime(vecTimings.insertTime) << setw(5) << formatTime(listTimings.insertTime) << setw(10) << formatTime(setTimings.insertTime) << endl;
+    cout << setw(5) << "Delete" << setw(5) << formatTime(vecTimings.deleteTime) << setw(5) << formatTime(listTimings.deleteTime) << setw(10) << formatTime(setTimings.deletetime) << endl;
 
     return 0;
 }
@@ -148,6 +148,11 @@ void deleteVector (vector<string>& vecCodes, long long& timeTaken) {
     vecCodes.erase(vecCodes.begin()) + midPos;
     auto end = high_resolution_clock::now();
     timeTaken = duration_cast<microseconds>(end - start).count();
+}
+
+void deleteList (list<string>& lstCodes, long long& timeTaken) {
+    auto it = lstcodes.begin();
+    advance(it, lstcodes.size() / 2);
 }
 
 
