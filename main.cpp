@@ -56,12 +56,18 @@ void readVector(vector<string>& vecCodes, long long& timeTaken) {
         exit(1);
 
     }
+
     string code;
     auto start = high_resolution_clock::now();
     while (getline(inFile, code)) {
         vecCodes.push_back(code);
+    }  
+    auto end = high_resolution_clock::now();
+    timeTaken = duration_cast<milliseconds>(end - start).count();
+
+    inFile.close(); 
 }
-//
+
 void readList(list<string>& listCodes, long long& timeTaken){
     ifstream inFile(FILE_NAME);
 
@@ -69,21 +75,24 @@ void readList(list<string>& listCodes, long long& timeTaken){
         cerr << "Error" << FILE_NAME << endl;
         exit(1);
     }
+
     string code;
-    auto start = hight__resolution__clok::now();
-    while (getli(infile, code)) {
-        list_codes.pushbaclk(code);
+    auto start = high_resolution_clock::now();
+    while (getline(inFile, code)) {
+        listCodes.pushback(code);
     }
-    auto end = hight_resolution_clock::now();
-    timeTaken = duration_cast<miliseconds>(end - start).count();
+    auto end = high_resolution_clock::now();
+    timeTaken = duration_cast<milliseconds>(end - start).count();
+
+    inFile.close();
 
 }
 
-void readSet(set<string>& setCodes, long long& timeTaken){
-    ifstream inFIle(FILE_NAME);
+void readSet(set<string>& setCodes, long long& timeTaken) {
+    ifstream inFile(FILE_NAME);
 
     if(!inFile) {
-        cerr << "Error opeing file: "<< FILE_NAME << endl;
+        cerr << "Error opening file: "<< FILE_NAME << endl;
         exit(1);
     }
 
@@ -93,7 +102,7 @@ void readSet(set<string>& setCodes, long long& timeTaken){
         setCodes.insert(code);
     }
     auto end = high_resolution_clock::now();
-    timeTaken = duration_cast<miliseconds>(end - start).count();\
+    timeTaken = duration_cast<milliseconds>(end - start).count();
 
     inFile.close();
 }
@@ -145,7 +154,9 @@ void insertSet(set<string>& setCodes, long long& timeTaken) {
 void deleteVector (vector<string>& vecCodes, long long& timeTaken) {
     size_t midPos= vecCodes.size()/2;
     auto start = high_resolution_clock::now();
-    vecCodes.erase(vecCodes.begin()) + midPos;
+    if (!vecCodes.empty() && midPos < vecCodes.size()) {
+        vecCodes.erase(vecCodes.begin()) + midPos;
+    }
     auto end = high_resolution_clock::now();
     timeTaken = duration_cast<microseconds>(end - start).count();
 }
