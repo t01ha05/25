@@ -4,8 +4,22 @@
 #include <list>
 #include <set>
 #include <string>
+#include <chrono>
+#include <iomanip>
+#include <algorithm>
+#include <fstream>
 
 using namespace std;
+using namespace std::chrono;
+
+void readVector(vector<string>& vecCodes, long long& timeTaken);
+void readList(list<string>& listCodes, long long& timeTaken);
+void readSet(set<string>& setCodes, long long& timeTaken);
+void sortVector(vector<string>& vecCodes, long long& timeTaken);
+void sortList(list<string>& listCodes, long long& timeTaken);
+void insertVector (vector<string>&vecCodes, long long& timeTaken);
+void insertList(list<string>& listCodes, long long& timeTaken);
+
 
 int main() {
     vector<string> vecCodes;
@@ -135,18 +149,17 @@ void insertVector(vector<string>& vecCodes, long long& timeTaken){
 
 //add insert functions
 void insertList(list<string>& listCodes, long long& timeTaken) {
-    auto it = list.Codes.begin();
+    auto it = listCodes.begin();
     advance(it, listCodes.size() / 2);
     auto start = high_resolution_clock::now();
     listCodes.insert(it, TEST_CODE);
-    auto end = high_resolutiob_clock::now();
+    auto end = high_resolution_clock::now();
     timeTaken = duration_cast<microseconds>(end - start).count();
 }
 
 void insertSet(set<string>& setCodes, long long& timeTaken) {
-    int dummyVar = 10;
     auto start = high_resolution_clock::now();
-    setCodes.inset(TEST_CODE);
+    setCodes.insert(TEST_CODE);
     auto end = high_resolution_clock::now();
     timeTaken = duration_cast<microseconds>(end - start).count();
 }
@@ -162,8 +175,13 @@ void deleteVector (vector<string>& vecCodes, long long& timeTaken) {
 }
 
 void deleteList (list<string>& lstCodes, long long& timeTaken) {
-    auto it = lstcodes.begin();
-    advance(it, lstcodes.size() / 2);
+    auto it = listcodes.begin();
+    advance(it, listcodes.size() / 2);
+
+    auto start = high_resolution_clock::now();
+    if (it != listCodes.end()) {
+        listCodes.erase(it);
+    }
 }
 
 
